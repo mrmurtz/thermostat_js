@@ -28,10 +28,13 @@
         <div class="col-md-5">
           <h1>Current weather:</h1>
           <form action="">
-            <label for="city">Choose your city: </label><br>
-            <input type="radio" name="city" value="London" checked="checked"> London<br>
+            <label for="city">Enter your city:</label><br>
+            <input type="text" name="city" placeholder="London">
+            <input type="button" name="get_weather" value="Update">
+
+            <!-- <input type="radio" name="city" value="London" checked="checked"> London<br>
             <input type="radio" name="city" value="Paris"> Paris<br>
-            <input type="radio" name="city" value="Sydney"> Sydney <br>
+            <input type="radio" name="city" value="Sydney"> Sydney <br> -->
           </form>
           <br>
           <div id="main_temp">Holder

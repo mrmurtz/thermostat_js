@@ -68,22 +68,23 @@ $(document).ready(function(){
     thermostat.reset();
   });
 
-  $("input[name=city]").click(function(){
-
-    var city = $("input[name=city]:checked").val();
-
-    $.ajax({
-      url: "http://api.openweathermap.org/data/2.5/weather?q="+ city + "&mode=json&APPID=3a84c4df6fb1e4c07a803fb0a4cec88e&units=metric",
-      data: {
-        format: "jsonp"
-      },
-      success: function(data) {
-        document.getElementById("main_temp").innerHTML = data.main.temp;
-      }
-    });
-
+  $("input[name=get_weather]").click(function(){
+      var city = $("input[name=city]").val();
+      $.ajax({
+        url: "http://api.openweathermap.org/data/2.5/weather?q="+ city + "&mode=json&APPID=3a84c4df6fb1e4c07a803fb0a4cec88e&units=metric",
+        data: {
+          format: "jsonp"
+        },
+        success: function(data) {
+          document.getElementById("main_temp").innerHTML = data.main.temp;
+        },
+        error: function() {
+          document.getElementById("main_temp").innerHTML = 'Not A Known City';
+        }
+      });
   });
 
+  //  loadup
 
   $.ajax({
     url: "http://api.openweathermap.org/data/2.5/weather?q=London&mode=json&APPID=3a84c4df6fb1e4c07a803fb0a4cec88e&units=metric",
