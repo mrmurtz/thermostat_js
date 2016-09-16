@@ -1,8 +1,11 @@
 require 'sinatra/base'
+require './data_mapper_setup.rb'
+
+ENV["RACK_ENV"] ||= "development"
 
 class App < Sinatra::Base
   get '/' do
-    'Hello App!'
+    erb :'index'
   end
 
   # start the server if ruby file executed directly
