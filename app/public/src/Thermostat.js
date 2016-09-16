@@ -54,6 +54,11 @@ Thermostat.prototype = {
     } else {
       return 'yellow';
     }
+  },
+
+  loadTemp: function(temp, powermode) {
+    this._powerSaving = powermode;
+    this._temperature = temp;
   }
 
   // changePowerSavingMode:

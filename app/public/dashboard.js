@@ -3,6 +3,15 @@
 
         var thermostat = new Thermostat();
 
+        $.get('http://localhost:9292/temperature', function(data){
+
+          var temp = data.temperature2;
+          var powermode = data.powermode2;
+          thermostat.loadTemp(temp, powermode);
+          updateTemperature();
+        });
+
+
         $("#temperature").text(thermostat._temperature);
         displayWeather('London');
 

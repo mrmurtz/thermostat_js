@@ -2,6 +2,7 @@ ENV["RACK_ENV"] ||= "development"
 
 require 'sinatra/base'
 require './data_mapper_setup.rb'
+require 'json'
 
 
 
@@ -15,7 +16,11 @@ class App < Sinatra::Base
     Thermostat.create(temperature: params[:temperature], powermode: params[:powermode])
   end
 
-  
+  get '/temperature' do
+    last_temp = Thermostat.last
+    content_type :json
+    {temperature2: last_temp.temperature, powermode2: last_temp.powermode}.to_json
+  end
 
 
   # start the server if ruby file executed directly
