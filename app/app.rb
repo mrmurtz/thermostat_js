@@ -1,12 +1,22 @@
+ENV["RACK_ENV"] ||= "development"
+
 require 'sinatra/base'
 require './data_mapper_setup.rb'
 
-ENV["RACK_ENV"] ||= "development"
+
 
 class App < Sinatra::Base
   get '/' do
     erb :'index'
   end
+
+  post '/temperature' do
+    # get the temperature from js and send in new instance(row) to db
+    Thermostat.create(temperature: params[:temperature], powermode: params[:powermode])
+  end
+
+  
+
 
   # start the server if ruby file executed directly
   run! if app_file == $0

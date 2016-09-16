@@ -52,7 +52,11 @@
           $('#temperature').text(thermostat._temperature);
           // $('#temperature').attr('class', thermostat.colour());
           $('.den').css("background", thermostat.colour());
-
         }
+
+
+          $('button').click(function(){
+            $.post('http://localhost:9292/temperature', {temperature: thermostat._temperature, powermode: thermostat._powerSaving});
+          });
 
     });
